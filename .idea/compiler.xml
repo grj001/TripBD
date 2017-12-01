@@ -9,8 +9,8 @@
         <module name="bi" />
         <module name="common" />
         <module name="flume" />
+        <module name="hive" />
         <module name="sqoop" />
-        <module name="warehouse" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -18,6 +18,7 @@
       <module name="collector" target="1.8" />
       <module name="common" target="1.8" />
       <module name="flume" target="1.8" />
+      <module name="hive" target="1.8" />
       <module name="sqoop" target="1.8" />
       <module name="TripBD" target="1.8" />
       <module name="warehouse" target="1.8" />

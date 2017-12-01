@@ -43,5 +43,11 @@
         <parameter value="D:\develop\ideaWorkspace\TripBD\collector\target/.scala_dependencies" />
       </parameters>
     </profile>
+    <profile name="Maven 8" modules="hive">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="D:\develop\ideaWorkspace\TripBD\warehouse\hive\target/.scala_dependencies" />
+      </parameters>
+    </profile>
   </component>
 </project>

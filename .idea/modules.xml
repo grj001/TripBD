@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/collector/collector.iml" filepath="$PROJECT_DIR$/collector/collector.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/collector/flume/flume.iml" filepath="$PROJECT_DIR$/collector/flume/flume.iml" />
+      <module fileurl="file://$PROJECT_DIR$/warehouse/hive/hive.iml" filepath="$PROJECT_DIR$/warehouse/hive/hive.iml" />
       <module fileurl="file://$PROJECT_DIR$/collector/sqoop/sqoop.iml" filepath="$PROJECT_DIR$/collector/sqoop/sqoop.iml" />
       <module fileurl="file://$PROJECT_DIR$/warehouse/warehouse.iml" filepath="$PROJECT_DIR$/warehouse/warehouse.iml" />
     </modules>

@@ -1,12 +1,15 @@
 package com.zhiyou.bd14.sqoop.imp
 
+import java.util.Date
+
+import com.zhiyou.bd14.common.DateUtil
+import com.zhiyou.bd14.sqoop.SQClient
 import org.apache.sqoop.client.SqoopClient
 import org.apache.sqoop.model.{MFromConfig, MInputType, MToConfig}
 
 object CompanyImport {
-  val url = "http://master:12000/sqoop/"
-  val client = new SqoopClient(url)
-  var yyyymmdd = "20171201"
+  val client = SQClient.client
+  var yyyymmdd = DateUtil.convert2String(new Date(),"yyyyMMdd")
 
   //postgresql 的架包
   // 创建hdfslink
@@ -56,7 +59,7 @@ object CompanyImport {
     //根路径 /sqoop/btrip_pg
     // yyyymmdd/tableName
     toConfig.getStringInput("toJobConfig.outputDirectory")
-      .setValue(s"/sqoop/btrip_pg$yyyymmdd/btrip_company")
+      .setValue(s"/sqoop/btrip_pg/$yyyymmdd/btrip_company")
     //这否在原来的基础上添加文件
     toConfig.getBooleanInput("toJobConfig.appendMode")
       .setValue(true)
@@ -121,7 +124,9 @@ object CompanyImport {
       case  _ => yyyymmdd
     }
 
+    deleteJob("btrip_company")
     createJob()
+    startJob()
   }
 
 }

@@ -1,11 +1,11 @@
 package com.zhiyou.bd14.sqoop.link
 
+import com.zhiyou.bd14.sqoop.SQClient
 import org.apache.sqoop.client.SqoopClient
 import org.apache.sqoop.model.{MConfig, MInput, MLink}
 
 object LinkCreator {
-  val url = "http://master:12000/sqoop/"
-  val client = new SqoopClient(url)
+  val client = SQClient.client
 
   // 创建job , job中把Company的数据导入hdfs上
   def createHdfsLink() = {
