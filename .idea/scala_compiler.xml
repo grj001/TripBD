@@ -1,40 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="Maven 1" modules="bi">
-      <parameters>
-        <parameter value="-dependencyfile" />
-        <parameter value="D:\develop\ideaWorkspace\TripBD\bi\target/.scala_dependencies" />
-      </parameters>
-    </profile>
-    <profile name="Maven 2" modules="TripBD">
-      <parameters>
-        <parameter value="-dependencyfile" />
-        <parameter value="D:\develop\ideaWorkspace\TripBD\target/.scala_dependencies" />
-      </parameters>
-    </profile>
-    <profile name="Maven 3" modules="sqoop">
+    <profile name="Maven 1" modules="sqoop">
       <parameters>
         <parameter value="-dependencyfile" />
         <parameter value="D:\develop\ideaWorkspace\TripBD\collector\sqoop\target/.scala_dependencies" />
       </parameters>
     </profile>
-    <profile name="Maven 4" modules="flume">
+    <profile name="Maven 2" modules="bi">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="D:\develop\ideaWorkspace\TripBD\bi\target/.scala_dependencies" />
+      </parameters>
+    </profile>
+    <profile name="Maven 3" modules="flume">
       <parameters>
         <parameter value="-dependencyfile" />
         <parameter value="D:\develop\ideaWorkspace\TripBD\collector\flume\target/.scala_dependencies" />
       </parameters>
     </profile>
-    <profile name="Maven 5" modules="warehouse">
+    <profile name="Maven 4" modules="warehouse">
       <parameters>
         <parameter value="-dependencyfile" />
         <parameter value="D:\develop\ideaWorkspace\TripBD\warehouse\target/.scala_dependencies" />
+      </parameters>
+    </profile>
+    <profile name="Maven 5" modules="TripBD">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="D:\develop\ideaWorkspace\TripBD\target/.scala_dependencies" />
       </parameters>
     </profile>
     <profile name="Maven 6" modules="common">
       <parameters>
         <parameter value="-dependencyfile" />
         <parameter value="D:\develop\ideaWorkspace\TripBD\common\target/.scala_dependencies" />
+      </parameters>
+    </profile>
+    <profile name="Maven 7" modules="collector">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="D:\develop\ideaWorkspace\TripBD\collector\target/.scala_dependencies" />
       </parameters>
     </profile>
   </component>

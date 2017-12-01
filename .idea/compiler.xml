@@ -14,13 +14,13 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="bi" target="1.6" />
-      <module name="collector" target="1.5" />
-      <module name="common" target="1.6" />
-      <module name="flume" target="1.6" />
-      <module name="sqoop" target="1.6" />
-      <module name="TripBD" target="1.6" />
-      <module name="warehouse" target="1.6" />
+      <module name="bi" target="1.8" />
+      <module name="collector" target="1.8" />
+      <module name="common" target="1.8" />
+      <module name="flume" target="1.8" />
+      <module name="sqoop" target="1.8" />
+      <module name="TripBD" target="1.8" />
+      <module name="warehouse" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
