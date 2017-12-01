@@ -6,7 +6,7 @@ import org.apache.sqoop.model.{MFromConfig, MInputType, MToConfig}
 object CompanyImport {
   val url = "http://master:12000/sqoop/"
   val client = new SqoopClient(url)
-
+  var yyyymmdd = "20171201"
 
   //postgresql 的架包
   // 创建hdfslink
@@ -23,12 +23,12 @@ object CompanyImport {
         |       , company_boss
         |       , company_name
         |       , company_phone
-        |from wsc.tb_company where 1=1 and ${CONDITIONS}
+        |from wsc.tb_company where ${CONDITIONS}
       """.stripMargin
 
     val job = client.createJob("btrip_pgbd", "btrip_hdfs")
 
-    job.setName("btrip_company01")
+    job.setName("btrip_company")
 
     val fromConfig = job.getFromJobConfig()
     val toConfig = job.getToJobConfig()
@@ -37,16 +37,29 @@ object CompanyImport {
     showToJobConfig(toConfig)
 
 
+    //用sql则这个不用写
 //    fromConfig.getStringInput("fromJobConfig.schemaName").setValue("wsc")
 //    fromConfig.getStringInput("fromJobConfig.tableName").setValue("tb_company")
     fromConfig.getStringInput("fromJobConfig.sql").setValue(sql)
+    //用sql这个需要设置
     fromConfig.getStringInput("fromJobConfig.partitionColumn").setValue("company_id")
+//    fromConfig.getStringInput("fromJobConfig.boundaryQuery").setValue("false")
 
 
-    toConfig.getEnumInput("toJobConfig.outputFormat").setValue("TEXT_FILE")
-    toConfig.getEnumInput("toJobConfig.compression").setValue("NONE")
-    toConfig.getStringInput("toJobConfig.outputDirectory").setValue("/sqoop/btrip_pg")
-    toConfig.getBooleanInput("toJobConfig.appendMode").setValue(true)
+
+    //Enum(枚举)的直接填字符串
+    toConfig.getEnumInput("toJobConfig.outputFormat")
+      .setValue("PARQUET_FILE")
+    toConfig.getEnumInput("toJobConfig.compression")
+      .setValue("NONE")
+    //sqoop导入数据到hdfs上目录配置
+    //根路径 /sqoop/btrip_pg
+    // yyyymmdd/tableName
+    toConfig.getStringInput("toJobConfig.outputDirectory")
+      .setValue(s"/sqoop/btrip_pg$yyyymmdd/btrip_company")
+    //这否在原来的基础上添加文件
+    toConfig.getBooleanInput("toJobConfig.appendMode")
+      .setValue(true)
 
 
 
@@ -61,6 +74,17 @@ object CompanyImport {
   }
 
 
+  def deleteJob(name:String) = {
+    try{
+      client.deleteJob(name)
+    }catch{
+      case e:Exception => e.printStackTrace()
+    }
+  }
+  def startJob() = {
+    client.startJob("btrip_company")
+    client.getDriver()
+  }
 
 
 
@@ -91,6 +115,12 @@ object CompanyImport {
 
 
   def main(args: Array[String]): Unit = {
+
+    yyyymmdd = args match {
+      case Array(date) => date
+      case  _ => yyyymmdd
+    }
+
     createJob()
   }
 
