@@ -15,5 +15,8 @@
         <module>hive</module>
     </modules>
 
+    <dependencies>
+
+    </dependencies>
 
 </project>

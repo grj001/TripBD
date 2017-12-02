@@ -1,0 +1,2 @@
+//
+hive -f ods_company_yyyymmdd.hql --hivevar yyyymmdd=20171201

@@ -11,5 +11,8 @@
 
     <artifactId>bi</artifactId>
 
+    <dependencies>
+
+    </dependencies>
 
 </project>

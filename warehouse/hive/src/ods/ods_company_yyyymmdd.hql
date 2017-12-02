@@ -7,4 +7,4 @@ create external table ods_company_${yyyymmdd} (
     , company_name string
     , company_phone string
 ) stored as parquet
-location '/sqoop/btrip_pg/${yyyymmdd}/btrip_company';
+location '/sqoop/btrip_pg/${yyyymmdd}/tb_company';
