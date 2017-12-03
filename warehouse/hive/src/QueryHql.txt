@@ -1,2 +1,27 @@
-//
-hive -f ods_company_yyyymmdd.hql --hivevar yyyymmdd=20171201
+//booking
+hive -f ods_booking.hql --hivevar yyyymmdd=20171202
+
+//buildinginfo
+hive -f ods_buildinginfo_yyyymmdd.hql --hivevar yyyymmdd=20171202
+
+//company
+hive -f ods_company_yyyymmdd.hql --hivevar yyyymmdd=20171202
+
+//customer
+hive -f ods_customer_yyyymmdd.hql --hivevar yyyymmdd=20171202
+
+//custsource
+hive -f ods_custsource_yyyymmdd.hql --hivevar yyyymmdd=20171202
+
+//hotel
+hive -f ods_hotel_yyyymmdd.hql --hivevar yyyymmdd=20171202
+
+//layers
+hive -f ods_layers_yyyymmdd.hql --hivevar yyyymmdd=20171202
+
+//roominfo
+hive -f ods_roominfo_yyyymmdd.hql --hivevar yyyymmdd=20171202
+
+//roomtype
+hive -f ods_roomtype_yyyymmdd.hql --hivevar yyyymmdd=20171202
+

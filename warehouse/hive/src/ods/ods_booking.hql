@@ -1,5 +1,4 @@
-drop table if exists ods_booking;
-create external table ods_company(
+create external table if not exists ods_booking(
     booking_id int,
           customer_id int,
           staff_id int,
@@ -23,8 +22,8 @@ create external table ods_company(
           price_class int,
           price_type int
 )
-partitioned by (operate_time string)
-stored as parquet
-alter table ods_booking drop partition(operate_time='${yyyymmdd}')
-alter table ods_booking add partition(operate_time='${yyyymmdd}')
+partitioned by (operate_date string)
+stored as parquet;
+alter table ods_booking drop partition(operate_date='${yyyymmdd}');
+alter table ods_booking add partition(operate_date='${yyyymmdd}')
 location '/sqoop/btrip_pg/${yyyymmdd}/tb_booking';
