@@ -1,3 +1,10 @@
+
+set hive.auto.convert.join=false;
+set mapred.reduce.tasks=1;
+set hive.exec.mode.local.auto=true;
+
+
+
 drop table if exists dwd_roominfo_${yyyymmdd};
 create table dwd_roominfo_${yyyymmdd} as
 select a.roominfo_id
@@ -20,7 +27,7 @@ select a.roominfo_id
        ,d.siteno
        ,d.address building_address
        ,e.hotel_id
-       ,e.hotelname
+       ,e.hotelname hotel_name
        ,e.province
        ,e.city
        ,e.county
@@ -33,14 +40,14 @@ select a.roominfo_id
        ,f.company_boss
        ,f.company_name
        ,f.company_phone
-from wsc.tb_roominfo a
-left join wsc.tb_roomtype b
+from ods_roominfo_${yyyymmdd} a
+left join ods_roomtype_${yyyymmdd} b
 on a.room_type_id=b.room_type_id
-left join wsc.tb_layers c
+left join ods_layers_${yyyymmdd} c
 on a.layers_id=c.layers_id
-left join wsc.tb_buildinginfo d
+left join ods_buildinginfo_${yyyymmdd} d
 on c.buildinginfo_id=d.buildinginfo_id
-left join wsc.tb_hotel e
+left join ods_hotel_${yyyymmdd} e
 on d.hotel_id=e.hotel_id
-left join wsc.tb_company f
+left join ods_company_${yyyymmdd} f
 on e.company_id=f.company_id;

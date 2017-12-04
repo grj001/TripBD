@@ -25,3 +25,44 @@ hive -f ods_roominfo_yyyymmdd.hql --hivevar yyyymmdd=20171202
 //roomtype
 hive -f ods_roomtype_yyyymmdd.hql --hivevar yyyymmdd=20171202
 
+//ods_bookedroom
+hive -f ods_bookedroom.hql --hivevar yyyymmdd=20171202
+
+
+
+
+/////////////////////////////////////////////////
+
+
+
+
+
+
+
+//dwd_booking_room
+hive -f dwd_booking_room.hql --hivevar yyyymmdd=20171202
+
+//dwd_roominfo_yyyymmdd
+hive -f dwd_roominfo_yyyymmdd.hql --hivevar yyyymmdd=20171202
+
+
+
+
+
+
+////////////////////////////////////////////
+
+
+
+//dw
+hive -f dw_room_book_checkin_yyyymm.hql --hivevar yyyymm=201712 --hivevar yyyymmdd=20171202 --hivevar month_first_day=20171201 --hivevar month_last_day=20171231
+
+
+
+
+
+
+
+
+
+

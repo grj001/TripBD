@@ -1,3 +1,8 @@
+
+set hive.auto.convert.join=false;
+set mapred.reduce.tasks=1;
+set hive.exec.mode.local.auto=true;
+
 create table if not exists dwd_booking_room(
     booking_id int
     ,customer_id int
@@ -7,9 +12,9 @@ create table if not exists dwd_booking_room(
     ,valid_flag int
     ,memo string
     ,booking_disable_reason string
-    ,operate_time date
+    ,operate_time string
     ,booking_disable_staff_id int
-    ,booking_disable_time date
+    ,booking_disable_time string
     ,hotel_id int
     ,sourcetype int
     ,acct_id int
@@ -23,13 +28,13 @@ create table if not exists dwd_booking_room(
     ,bookedroom_id int
     ,livetype string
     ,room_money decimal
-    ,booktime date
+    ,booktime string
     ,bookvalid_flag int
     ,room_paymoney decimal
     ,room_disable_reason string
     ,roominfo_id int
     ,room_disable_staff_id int
-    ,room_disable_time date
+    ,room_disable_time string
     ,checkin_room_id int
     ,cust_source_id int
     ,source_name string
@@ -48,7 +53,8 @@ partitioned by (operate_date string)
 stored as orc;
 alter table dwd_booking_room drop partition(operate_date='${yyyymmdd}');
 alter table dwd_booking_room add partition(operate_date='${yyyymmdd}');
-insert overwrite into table dwd_booking_room partition(operate_date='${yyyymmdd}')
+
+insert overwrite table dwd_booking_room partition(operate_date='${yyyymmdd}')
 select a.booking_id
        ,a.customer_id
        ,a.staff_id
@@ -93,10 +99,12 @@ select a.booking_id
        ,d.note
        ,d.taobao_account
        ,d.hyunit
-from wsc.tb_booking a
-inner join wsc.tb_bookedroom b
+from ods_booking a
+inner join ods_bookedroom b
 on a.booking_id=b.booking_id
-left join wsc.tb_cust_source c
+left join ods_custsource_${yyyymmdd} c
 on a.sourcetype=c.cust_source_id
-left join wsc.tb_customer d
-on a.customer_id=d.customer_id;
+left join ods_customer_${yyyymmdd} d
+on a.customer_id=d.customer_id
+-- where b.booktime>='${month_first_day}' and b.booktime<='${month_last_day}'
+where a.operate_date='${yyyymmdd}' and b.operate_date='${yyyymmdd}';

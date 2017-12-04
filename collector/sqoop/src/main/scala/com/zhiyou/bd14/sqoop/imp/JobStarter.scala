@@ -159,16 +159,27 @@ object JobStarter {
     val yyyymmdd = "20171202"
     val sql =
       s"""
-        |select a.*
-        |from wsc.tb_bookedroom a
-        | inner join wsc.tb_booking b
-        | on a.booking_id = b.booking_id
-        |where to_char(b.operate_time,'YYYYMMDD')='20161202'
-        |and ${"$"}{CONDITIONS}
-      """.stripMargin
-    val tableName = "tb_bookedroom"
-    val primaryKey = "bookedroom_id"
-    new PgImport(client, yyyymmdd, sql, tableName, primaryKey)
+         |select a.bookedroom_id
+         |  ,a.livetype
+         |  ,a.room_money
+         |  ,to_char(a.booktime, 'YYYYMMDD') booktime
+         |  ,a.bookvalid_flag
+         |  ,a.paymoney
+         |  ,a.disable_reason
+         |  ,a.booking_id
+         |  ,a.roominfo_id
+         |  ,a.disable_staff_id
+         |  ,to_char(a.disable_time,'YYYY-MM-DD HH24:MI:SS') disable_time
+         |  ,a.checkin_room_id
+         |from wsc.tb_bookedroom a
+         |inner join wsc.tb_booking b
+         |on a.booking_id = b.booking_id
+         |where to_char(b.operate_time, 'YYYYMMDD')='20161202'
+         |and ${"$"}{CONDITIONS}
+       """.stripMargin
+    val tableName ="tb_bookedroom"
+    val pcName = "bookedroom_id"
+    new PgImport(SQClient.client,yyyymmdd,sql,tableName,pcName)
   }
 
 
@@ -184,38 +195,8 @@ object JobStarter {
 
 
   def main(args: Array[String]): Unit = {
-//    val importor1 = companyJob()
-//    val importor2 = hotelJob()
-//    val importor3 = buildingJob()
-//    val importor4 = layersJob()
-//    val importor5 = roominfoJob()
-//val importor6 = roomTypeJob()
 
-
-
-
-    val importor10 = tbCustomerJob()
-//    val importor7 = tbCustSourceJob()
-//    val importor8 = tbBookingJob()
-//    val importor9 = tbBookedroomJob()
-
-
-
-    //customer
-
-
-
-//    doJob(importor1)
-//    doJob(importor2)
-//    doJob(importor3)
-//    doJob(importor4)
-//    doJob(importor5)
-
-
-//    doJob(importor7)
-//    doJob(importor8)
-//    doJob(importor9)
-    doJob(importor10)
+    doJob(tbBookedroomJob())
   }
 }
 
