@@ -15,7 +15,7 @@ select ${yyyymm} date_month
 from dwd_booking_room a
 left join dwd_roominfo_${yyyymmdd} b
 on a.roominfo_id=b.roominfo_id
-where a.booktime>=${month_first_day} and a.booktime<=${month_first_day}
+where a.booktime>=${month_first_day} and a.booktime<=${month_last_day}
 group by ${yyyymm}
          ,a.hotel_id
          ,b.room_type_id;
