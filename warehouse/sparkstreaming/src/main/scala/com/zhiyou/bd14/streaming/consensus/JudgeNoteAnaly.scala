@@ -7,12 +7,22 @@ import com.zhiyou.bd14.streaming.StreamingUtil._
   * kafka中message的key和value都注意使用string类型
   */
 object JudgeNoteAnaly {
+
+
   //从kafka获取judge_note中的数据
   def getJudgeNote() = {
     val topics = Array("judge_note")
     val judgeNote = getStreamingFromKafka(topics)
+    judgeNote.map(x=>x.value()).print()
     judgeNote.map(x=>x.value())
   }
+
+
+
+
+
+
+
   def calcJudgeScore() = {
     val judgeNote = getJudgeNote()
     judgeNote.mapPartitions(x=>{
@@ -27,6 +37,10 @@ object JudgeNoteAnaly {
     })
   }
   case class ScoreDtl(judgeNum:Int,goodNum:Int,mediaNum:Int,badNum:Int,sumScore:Double,safeScore:Double,nvScore:Double,cleanScore:Double,serviceScore:Double)
+
+
+
+
   def accumulateScore() = {
     val judgeScore = calcJudgeScore()
     //总评论数，好评评论数，中评评论数，差评评论数，综合总评分和，安全评分和，隔音评分和，卫生评分和，服务评分和
@@ -82,7 +96,8 @@ object JudgeNoteAnaly {
   }
 
   def main(args: Array[String]): Unit = {
-    accumulateScore()
+    getJudgeNote()
+//    accumulateScore()
     ssc.start()
     ssc.awaitTermination()
   }
