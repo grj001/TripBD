@@ -44,20 +44,7 @@
         </dependency>
 
 
-        <!-- sqoop-client -->
-        <dependency>
-            <groupId>org.apache.sqoop</groupId>
-            <artifactId>sqoop-client</artifactId>
-            <version>1.99.7</version>
-        </dependency>
 
-
-        <!-- postgresql -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.1.4</version>
-        </dependency>
 
 
 

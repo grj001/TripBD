@@ -7,6 +7,12 @@
         <parameter value="D:\develop\ideaWorkspace\TripBD\collector\sqoop\target/.scala_dependencies" />
       </parameters>
     </profile>
+    <profile name="Maven 10" modules="sparkstreaming">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="D:\develop\ideaWorkspace\TripBD\warehouse\sparkstreaming\target/.scala_dependencies" />
+      </parameters>
+    </profile>
     <profile name="Maven 2" modules="bi">
       <parameters>
         <parameter value="-dependencyfile" />
@@ -47,6 +53,12 @@
       <parameters>
         <parameter value="-dependencyfile" />
         <parameter value="D:\develop\ideaWorkspace\TripBD\warehouse\hive\target/.scala_dependencies" />
+      </parameters>
+    </profile>
+    <profile name="Maven 9" modules="crawler">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="D:\develop\ideaWorkspace\TripBD\collector\crawler\target/.scala_dependencies" />
       </parameters>
     </profile>
   </component>

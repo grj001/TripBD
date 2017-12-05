@@ -14,6 +14,12 @@
     <dependencies>
 
 
+        <!-- flume-ng-core -->
+        <dependency>
+            <groupId>org.apache.flume</groupId>
+            <artifactId>flume-ng-core</artifactId>
+            <version>1.8.0</version>
+        </dependency>
 
 
 

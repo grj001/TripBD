@@ -9,9 +9,9 @@ drop table if exists dwd_roominfo_${yyyymmdd};
 create table dwd_roominfo_${yyyymmdd} as
 select a.roominfo_id
        ,a.roomno
-       ,cast(a.alldayprice as decimal)
-       ,cast(a.halfdayprice as decimal)
-       ,cast(a.hourprice as decimal)
+       ,cast(a.alldayprice as decimal) alldayprice
+       ,cast(a.halfdayprice as decimal) halfdayprice
+       ,cast(a.hourprice as decimal) hourprice
        ,a.roomarea
        ,a.description
        ,a.note

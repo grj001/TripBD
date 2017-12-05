@@ -13,10 +13,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>hive</module>
+        <module>sparkstreaming</module>
     </modules>
 
-    <dependencies>
 
-    </dependencies>
 
 </project>
