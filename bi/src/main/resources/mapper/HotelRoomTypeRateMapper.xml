@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhiyou.bd14.bi.dao.HotelRoomTypeRateDao">
+    <resultMap id="hotelRoomTypeRateMap" type="com.zhiyou.bd14.bi.domain.HotelRoomTypeRate">
+        <id property="rrId" column="rr_id"></id>
+
+        <id property="dateMonth" column="date_month"></id>
+        <id property="hotelId" column="hotel_id"></id>
+        <id property="hotelName" column="hotel_name"></id>
+        <id property="roomTypeId" column="room_type_id"></id>
+        <id property="roomtypeName" column="roomtype_name"></id>
+
+        <id property="roomNum" column="room_num"></id>
+        <id property="bookNum" column="book_num"></id>
+        <id property="checkinNum" column="checkin_num"></id>
+
+
+    </resultMap>
+
+    <select id="findAll" resultMap="hotelRoomTypeRateMap">
+        select *
+        from st_hotel_room_rate
+    </select>
+</mapper>

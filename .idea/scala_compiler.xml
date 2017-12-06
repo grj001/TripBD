@@ -13,6 +13,12 @@
         <parameter value="D:\develop\ideaWorkspace\TripBD\warehouse\sparkstreaming\target/.scala_dependencies" />
       </parameters>
     </profile>
+    <profile name="Maven 11" modules="sttomysql">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="D:\develop\ideaWorkspace\TripBD\warehouse\sttomysql\target/.scala_dependencies" />
+      </parameters>
+    </profile>
     <profile name="Maven 2" modules="bi">
       <parameters>
         <parameter value="-dependencyfile" />

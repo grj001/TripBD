@@ -30,8 +30,10 @@ object JudgeNoteAnaly {
       val date = "20171205"//dstream中获取的流数据中应该有每一条评论的时间，流数据中确实，需要采集数据的地方补上时间数据
       for(judge <- x) yield {
         judge match{
-          case regex(hotelId,platform,userId,userName,userLevel,judgeTimes,coverCity,title,scoreSum,scoreDtl1,scoreDtl2,scoreDtl3,scoreDtl4
-          ,liveDate,isPlateformOrdered,content) => ((date,hotelId,platform),(scoreSum,scoreDtl1,scoreDtl2,scoreDtl3,scoreDtl4))
+          case regex(hotelId,platform,userId,userName,userLevel,judgeTimes,coverCity,title
+          ,scoreSum,scoreDtl1,scoreDtl2,scoreDtl3,scoreDtl4
+          ,liveDate,isPlateformOrdered,content) =>
+            ((date,hotelId,platform),(scoreSum,scoreDtl1,scoreDtl2,scoreDtl3,scoreDtl4))
         }
       }
     })

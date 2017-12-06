@@ -13,6 +13,7 @@
         <module name="hive" />
         <module name="sparkstreaming" />
         <module name="sqoop" />
+        <module name="sttomysql" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -23,7 +24,9 @@
       <module name="flume" target="1.8" />
       <module name="hive" target="1.8" />
       <module name="sparkstreaming" target="1.8" />
+      <module name="springbootfirstdemo" target="1.8" />
       <module name="sqoop" target="1.8" />
+      <module name="sttomysql" target="1.8" />
       <module name="TripBD" target="1.8" />
       <module name="warehouse" target="1.8" />
     </bytecodeTargetLevel>
