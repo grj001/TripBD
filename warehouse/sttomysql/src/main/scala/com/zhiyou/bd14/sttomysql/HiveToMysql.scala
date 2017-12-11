@@ -34,13 +34,21 @@ object HiveToMysql {
   def writeToMysql() = {
     val url = "jdbc:mysql://localhost:3306/btrip"
     val properties = new Properties()
-    properties.put("user","root")
-    properties.put("password","root")
-    readFromHiveJdbc().write.jdbc(url,"st_hotel_roomtype_rate_201712",properties)
+    properties.put("user", "root")
+    properties.put("password", "root")
+    readFromHiveJdbc().write.jdbc(url, "st_hotel_roomtype_rate_201712", properties)
   }
 
   def main(args: Array[String]): Unit = {
     writeToMysql()
+    test01()
+  }
+
+
+  def test01() = {
+    val list = List[String]("a", "b", "c")
+
+    println(list.mkString(","))
   }
 
 
